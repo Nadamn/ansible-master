@@ -1,0 +1,13 @@
+[server]
+192.168.0.40
+
+[app]
+192.168.0.50
+
+[db]
+192.168.0.60
+
+[general:children]
+server
+app
+db

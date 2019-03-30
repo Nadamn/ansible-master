@@ -1,0 +1,27 @@
+- name: install apache
+  yum: 
+    name: httpd
+    state: present
+
+- name: start apache
+  service:
+    name: httpd
+    state: started
+
+- name: copy admin ui
+  copy:
+    src: adminClient
+    dest: /var/www/html
+  notify: restart apache
+
+- name: copy user ui
+  copy:  
+    src: userClient
+    dest: /var/www/html
+  notify: restart apache
+
+- name: change apache server configuration
+  copy: 
+    src: httpd.conf
+    dest: /etc/httpd/conf/httpd.conf
+  notify: restart apache

@@ -1,0 +1,8 @@
+- name: configure web server
+  hosts: server
+  become: true
+  roles:
+   - server
+  handlers:
+   - name: restart apache
+     service: name=httpd state=restarted
