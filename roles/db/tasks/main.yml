@@ -1,0 +1,26 @@
+- name: adding mongo repo
+  copy:
+    src: mongodb-org.repo
+    dest: /etc/yum.repos.d/
+
+- name: installing Mongo DB
+  yum:
+    name: mongodb-org
+    state: present
+
+- name: copy the mongo.conf file to DB server
+  copy:
+    src: mongod.conf
+    dest: /etc/mongod.conf
+
+- name: changing the conf file ownership
+  file:
+    path: /etc/mongod.conf
+    owner: mongod
+    group: mongod
+    mode: 0644
+
+- name: restart MongoDB
+  service:
+    name: mongod
+    state: restarted

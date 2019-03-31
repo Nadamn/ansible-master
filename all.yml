@@ -13,3 +13,4 @@
         state: started
 - import_playbook: server.yml
 - import_playbook: backend.yml
+- import_playbook: db.yml

@@ -16,6 +16,9 @@
     src: nodeJS_server
     dest: /var/nodejs/
 
+- name: change directory and install dependencies
+  command: chdir=/var/nodejs/nodeJS_server/ npm install
+
 - name: check running nodejs application
   command: forever list
   register: forever_list
