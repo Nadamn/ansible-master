@@ -77,7 +77,7 @@ function listBooks() {
 
         }
     };
-    xhttp.open("GET", "http://172.168.0.30:5000/home");
+    xhttp.open("GET", "http://192.168.0.50:5000/home");
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.setRequestHeader("user_id", localStorage.getItem("userId"));
     xhttp.send()

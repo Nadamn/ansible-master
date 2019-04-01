@@ -37,7 +37,7 @@ function listCategoryBooks() {
       });
     }
   };
-  xhttp.open("GET", `http://172.168.0.30:5000/categories/${localStorage.getItem("categoryId")}`);
+  xhttp.open("GET", `http://192.168.0.50:5000/categories/${localStorage.getItem("categoryId")}`);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send()
 };

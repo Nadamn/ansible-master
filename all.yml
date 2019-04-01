@@ -1,16 +1,4 @@
-- name: configuring all machines
-  hosts: general
-  become: true
-  tasks:
-    - name: installing epel-release package and ntp
-      yum: name={{ item }} state=installed 
-      with_items:
-        - epel-release
-        - ntp
-    - name: start ntpd
-      service:
-        name: ntpd
-        state: started
+- import_playbook: pre.yml
 - import_playbook: server.yml
 - import_playbook: backend.yml
 - import_playbook: db.yml

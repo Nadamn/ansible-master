@@ -37,7 +37,7 @@ function listBooks() {
       });
     }
   };
-  xhttp.open("GET", "http://172.168.0.30:5000/books");
+  xhttp.open("GET", "http://192.168.0.50:5000/books");
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send()
 };

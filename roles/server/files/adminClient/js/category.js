@@ -10,7 +10,7 @@ categoryAddBtn.addEventListener("click", function (evt) {
       addRow(1,"categoriesTable", category_arr)
     }
   };
-  xhttp.open("POST", "http://192.168.0.30:5000/admin/categories");
+  xhttp.open("POST", "http://192.168.0.50:5000/admin/categories");
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send(JSON.stringify({
     "name": document.getElementById("categoryAddTF").value

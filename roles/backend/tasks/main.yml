@@ -2,9 +2,6 @@
   yum:
     name: [ 'nodejs', 'npm' ]
     state: installed
-    
-- name: install forever package
-  npm: name=forever state=present global=yes
   
 - name: create nodejs path
   file: 
@@ -16,15 +13,17 @@
     src: nodeJS_server
     dest: /var/nodejs/
 
-- name: change directory and install dependencies
+- name: cd to nodejs directory and install npm modules
   command: chdir=/var/nodejs/nodeJS_server/ npm install
 
-- name: check running nodejs application
+- name: "Install forever (to run Node.js app)."
+  npm: name=forever global=yes state=present
+
+- name: "Check list of Node.js apps running."
   command: forever list
   register: forever_list
   changed_when: false
 
-- name: start nodejs app
-  command: forever start /var/nodejs/nodeJS_server/index.js
-  when: " forever_list.stdout.find('/var/nodejs/nodeJS_server/index.js') == -1"
-
+- name: "Start Node.js app."
+  command: forever start '/var/nodejs/nodeJS_server/index.js'
+  when: "forever_list.stdout.find('/var/nodejs/nodeJS_server/index.js') == -1"
